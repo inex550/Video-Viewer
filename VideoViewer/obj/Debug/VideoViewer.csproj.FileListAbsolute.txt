@@ -1,0 +1,17 @@
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\bin\Debug\VideoViewer.exe.config
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\bin\Debug\VideoViewer.exe
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\bin\Debug\VideoViewer.pdb
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\obj\Debug\VideoViewer.csprojAssemblyReference.cache
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\obj\Debug\MainWindow.g.cs
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\obj\Debug\App.g.cs
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\obj\Debug\VideoViewer_MarkupCompile.cache
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\obj\Debug\VideoViewer_MarkupCompile.lref
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\obj\Debug\MainWindow.baml
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\obj\Debug\VideoViewer.g.resources
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\obj\Debug\VideoViewer.Properties.Resources.resources
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\obj\Debug\VideoViewer.csproj.GenerateResource.cache
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\obj\Debug\VideoViewer.csproj.CoreCompileInputs.cache
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\obj\Debug\VideoViewer.exe
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\obj\Debug\VideoViewer.pdb
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\obj\Debug\OptionsWindow.g.cs
+C:\Users\x_akh\source\repos\VideoViewer\VideoViewer\obj\Debug\OptionsWindow.baml
