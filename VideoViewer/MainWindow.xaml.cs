@@ -113,12 +113,12 @@ namespace VideoViewer
                             backroundTextBlock.Opacity = 0;
                         });
 
-                        myPort.DiscardInBuffer();
-                        myPort.DiscardOutBuffer();
-
                         stateTimer = true;
                         Thread.Sleep(timer * 1000);
                         stateTimer = false;
+
+                        myPort.DiscardInBuffer();
+                        myPort.DiscardOutBuffer();
                     }
                 }
                 catch { break; }
