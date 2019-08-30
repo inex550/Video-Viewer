@@ -30,10 +30,6 @@ namespace VideoViewer
         SerialPort myPort;
         int timer;
 
-        bool stateTimer = false;
-
-        Thread threadFalseTimerState;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -63,7 +59,7 @@ namespace VideoViewer
                 myPort.BaudRate = int.Parse(baudRate);
                 myPort.Open();
 
-                threadFalseTimerState = new Thread(TestOnNewLogWhereTimer);
+                Thread threadFalseTimerState = new Thread(TestOnNewLogWhereTimer) { IsBackground = true };
                 threadFalseTimerState.Start();
             }
             catch (Exception ex)
@@ -83,7 +79,7 @@ namespace VideoViewer
             {
                 try
                 {
-                    if (myPort.ReadLine() != null && !stateTimer)
+                    if (myPort.ReadLine() != null)
                     {
                         this.Dispatcher.Invoke(() =>
                         {
@@ -93,18 +89,10 @@ namespace VideoViewer
                             Thread.Sleep(500);
                             backroundTextBlock.Opacity = 0;
                         });
-
-                        stateTimer = true;
                         Thread.Sleep(timer * 1000);
-                        stateTimer = false;
 
                         myPort.DiscardInBuffer();
                         myPort.DiscardOutBuffer();
-                    }
-
-                    if (myPort.ReadLine() != null && stateTimer)
-                    {
-                        string message = myPort.ReadLine();
                     }
                 }
                 catch { break; }
