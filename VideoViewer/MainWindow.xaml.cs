@@ -32,6 +32,9 @@ namespace VideoViewer
 
         bool stateTimer = false;
 
+        Thread threadTrueTimerState;
+        Thread threadFalseTimerState;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -61,10 +64,10 @@ namespace VideoViewer
                 myPort.BaudRate = int.Parse(baudRate);
                 myPort.Open();
 
-                Thread threadTrueTimerState = new Thread(TestOnNewLog);
+                threadTrueTimerState = new Thread(TestOnNewLog);
                 threadTrueTimerState.Start();
 
-                Thread threadFalseTimerState = new Thread(TestOnNewLogWhereTimer);
+                threadFalseTimerState = new Thread(TestOnNewLogWhereTimer);
                 threadFalseTimerState.Start();
             }
             catch (Exception ex)
@@ -82,10 +85,14 @@ namespace VideoViewer
         {
             while (true)
             {
-                if (myPort.ReadLine() != null && stateTimer)
+                try
                 {
-                    string message = myPort.ReadLine();
+                    if (myPort.ReadLine() != null && stateTimer)
+                    {
+                        string message = myPort.ReadLine();
+                    }
                 }
+                catch { break; }
             }
         }
 
@@ -93,21 +100,25 @@ namespace VideoViewer
         {
             while (true)
             {
-                if (myPort.ReadLine() != null && !stateTimer)
+                try
                 {
-                    this.Dispatcher.Invoke(() =>
+                    if (myPort.ReadLine() != null && !stateTimer)
                     {
-                        playerMediaElement.Source = new Uri(AppDomain.CurrentDomain.BaseDirectory + @"Videos\" + randomVideo.Next(1, 21) + ".mp4", UriKind.Absolute);
-                        backroundTextBlock.Opacity = 100;
-                        playerMediaElement.Play();
-                        Thread.Sleep(500);
-                        backroundTextBlock.Opacity = 0;
-                    });
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            playerMediaElement.Source = new Uri(AppDomain.CurrentDomain.BaseDirectory + @"Videos\" + randomVideo.Next(1, 21) + ".mp4", UriKind.Absolute);
+                            backroundTextBlock.Opacity = 100;
+                            playerMediaElement.Play();
+                            Thread.Sleep(500);
+                            backroundTextBlock.Opacity = 0;
+                        });
 
-                    stateTimer = true;
-                    Thread.Sleep(timer * 1000);
-                    stateTimer = false;
+                        stateTimer = true;
+                        Thread.Sleep(timer * 1000);
+                        stateTimer = false;
+                    }
                 }
+                catch { break; }
             }
         }
 
@@ -124,6 +135,8 @@ namespace VideoViewer
         {
             if(e.Key == Key.P)
             {
+                myPort.Close();
+
                 optionsWindow = new OptionsWindow();
                 optionsWindow.Show();
 
@@ -139,6 +152,5 @@ namespace VideoViewer
                 backroundTextBlock.Opacity = 0;
             }
         }
-
     }
 }

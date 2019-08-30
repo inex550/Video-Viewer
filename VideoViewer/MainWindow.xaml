@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VideoViewer"
         mc:Ignorable="d"
-        Title="Video" Height="475.47" Width="803.379" Background="#101010" WindowState="Maximized" Cursor="None" KeyDown="Window_KeyDown">
+        Title="Video" Height="475.47" Width="803.379" Background="#101010" WindowState="Maximized" Cursor="None" KeyDown="Window_KeyDown" AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <MediaElement x:Name="playerMediaElement" MediaEnded="PlayerMediaElement_MediaEnded"/>
         <TextBlock x:Name="backroundTextBlock" Background="#101010" Opacity="0"/>
