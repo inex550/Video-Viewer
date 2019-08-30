@@ -32,7 +32,6 @@ namespace VideoViewer
 
         bool stateTimer = false;
 
-        Thread threadTrueTimerState;
         Thread threadFalseTimerState;
 
         public MainWindow()
@@ -64,9 +63,6 @@ namespace VideoViewer
                 myPort.BaudRate = int.Parse(baudRate);
                 myPort.Open();
 
-                threadTrueTimerState = new Thread(TestOnNewLog);
-                threadTrueTimerState.Start();
-
                 threadFalseTimerState = new Thread(TestOnNewLogWhereTimer);
                 threadFalseTimerState.Start();
             }
@@ -78,21 +74,6 @@ namespace VideoViewer
                 MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
 
                 this.Close();
-            }
-        }
-
-        void TestOnNewLog()
-        {
-            while (true)
-            {
-                try
-                {
-                    if (myPort.ReadLine() != null && stateTimer)
-                    {
-                        string message = myPort.ReadLine();
-                    }
-                }
-                catch { break; }
             }
         }
 
@@ -119,6 +100,11 @@ namespace VideoViewer
 
                         myPort.DiscardInBuffer();
                         myPort.DiscardOutBuffer();
+                    }
+
+                    if (myPort.ReadLine() != null && stateTimer)
+                    {
+                        string message = myPort.ReadLine();
                     }
                 }
                 catch { break; }
