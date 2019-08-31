@@ -57,6 +57,13 @@ namespace VideoViewer
             {
                 myPort.PortName = portName;
                 myPort.BaudRate = int.Parse(baudRate);
+
+                myPort.Parity = Parity.None;
+                myPort.StopBits = StopBits.One;
+                myPort.DataBits = 8;
+                myPort.Handshake = Handshake.None;
+                myPort.RtsEnable = true;
+
                 myPort.Open();
 
                 Thread threadFalseTimerState = new Thread(TestOnNewLogWhereTimer) { IsBackground = true };
