@@ -58,10 +58,6 @@ namespace VideoViewer
                 myPort.PortName = portName;
                 myPort.BaudRate = int.Parse(baudRate);
 
-                myPort.DataBits = 8;
-                myPort.Handshake = Handshake.None;
-                myPort.Parity = Parity.None;
-                myPort.StopBits = StopBits.One;
                 myPort.DtrEnable = true;
 
                 myPort.Open();
